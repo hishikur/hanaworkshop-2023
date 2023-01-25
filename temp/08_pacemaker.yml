@@ -1,0 +1,15 @@
+---
+- hosts: hanas
+
+  vars:
+    sap_hana_ha_pacemaker_hana_sid: RHE
+    sap_hana_ha_pacemaker_hana_instance_number: "01"
+    sap_hana_ha_pacemaker_vip: 192.168.47.100
+    sap_hana_ha_pacemaker_hacluster_password: "Mysecretpassword"
+    sap_hana_ha_pacemaker_node1_fqdn: hana-{{ fqdn.stdout }}1.example.com
+    sap_hana_ha_pacemaker_node2_fqdn: hana-{{ fqdn.stdout }}2.example.com
+    sap_hana_ha_pacemaker_node1_ip: {{ hana1ip.stdout }}
+    sap_hana_ha_pacemaker_node2_ip: {{ hana2ip.stdout }}
+
+  roles:
+    - redhat_sap.sap_hana_ha_pacemaker

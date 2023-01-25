@@ -1,0 +1,46 @@
+---
+- name: customize Parent Playbooks
+  hosts: localhost
+
+  tasks:
+  - name: Set FQDN
+    shell: uname -n | cut -c 9-13
+    register : fqdn
+
+  - name: Set IP for HANA1
+    shell: nslookup hana-{{ fqdn.stdout }}1 |grep 192|cut -f 2 -d " "
+    register : hana1ip
+
+  - name: Set IP for HANA2
+    shell: nslookup hana-{{ fqdn.stdout }}2 |grep 192|cut -f 2 -d " "
+    register : hana2ip
+
+  - name: Prepare hana1 in host_vars
+    copy:
+      src: /home/cloud-user/hanaworkshop-2022/temp/hana-xxxxx1
+      dest: /home/cloud-user/hanaworkshop-2022/host_vars/hana-{{ fqdn.stdout }}1
+
+  - name: Prepare hana2 in host_vars
+    copy:
+      src: /home/cloud-user/hanaworkshop-2022/temp/hana-xxxxx2
+      dest: /home/cloud-user/hanaworkshop-2022/host_vars/hana-{{ fqdn.stdout }}2
+
+  - name: Prepare hsr.yml
+    template:
+      src: /home/cloud-user/hanaworkshop-2022/temp/hsr.yml
+      dest: /home/cloud-user/hanaworkshop-2022/hsr.yml
+
+  - name: Prepare pacemaker.yml
+    template:
+      src: /home/cloud-user/hanaworkshop-2022/temp/pacemaker.yml
+      dest: /home/cloud-user/hanaworkshop-2022/pacemaker.yml
+
+- name: Transfer and execute a script.
+  hosts: s4hanas
+
+  tasks:
+  - name: Transfer the script
+    copy: src=/home/cloud-user/hanaworkshop-2022/pkg_fix.sh dest=/home/cloud-user mode=0777
+
+  - name: Execute the script
+    command: sh /home/cloud-user/pkg_fix.sh

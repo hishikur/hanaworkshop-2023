@@ -1,0 +1,17 @@
+---
+#replace the existing /home/cloud-user/.ansible/roles/redhat_sap.sap_hostagent/tasks/deploy_rpm.yml file with this file
+
+- name: Ensure RPM file is installed
+  yum:
+    name: "{{ sap_hostagent_rpm_local_path }}/{{ sap_hostagent_rpm_file_name }}"
+    state: present
+    disable_gpg_check: yes
+  when: sap_hostagent_rpm_local_path is defined
+
+- name: Ensure RPM file is installed
+  yum:
+    name: "{{ sap_hostagent_rpm_local_path }}/{{ sap_hostagent_rpm_file_name }}"
+    state: present
+    disable_gpg_check: yes
+  when: sap_hostagent_rpm_local_path is defined
+

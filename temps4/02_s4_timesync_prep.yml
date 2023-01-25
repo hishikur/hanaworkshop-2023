@@ -1,0 +1,11 @@
+---
+- name: Prepare SAP HANA database installation
+  hosts: s4hanas
+  become: yes
+
+  vars:
+    timesync_ntp_servers:
+      - hostname: pool.ntp.org
+
+  roles:
+    - linux-system-roles.timesync
