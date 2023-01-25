@@ -17,30 +17,30 @@
 
   - name: Prepare hana1 in host_vars
     copy:
-      src: /home/cloud-user/hanaworkshop-2022/temp/hana-xxxxx1
-      dest: /home/cloud-user/hanaworkshop-2022/host_vars/hana-{{ fqdn.stdout }}1
+      src: /home/cloud-user/hanaworkshop-2023/temp/hana-xxxxx1
+      dest: /home/cloud-user/hanaworkshop-2023/host_vars/hana-{{ fqdn.stdout }}1
 
   - name: Prepare hana2 in host_vars
     copy:
-      src: /home/cloud-user/hanaworkshop-2022/temp/hana-xxxxx2
-      dest: /home/cloud-user/hanaworkshop-2022/host_vars/hana-{{ fqdn.stdout }}2
+      src: /home/cloud-user/hanaworkshop-2023/temp/hana-xxxxx2
+      dest: /home/cloud-user/hanaworkshop-2023/host_vars/hana-{{ fqdn.stdout }}2
 
   - name: Prepare hsr.yml
     template:
-      src: /home/cloud-user/hanaworkshop-2022/temp/07_hsr.yml
-      dest: /home/cloud-user/hanaworkshop-2022/07_hsr.yml
+      src: /home/cloud-user/hanaworkshop-2023/temp/07_hsr.yml
+      dest: /home/cloud-user/hanaworkshop-2023/07_hsr.yml
 
   - name: Prepare pacemaker.yml
     template:
-      src: /home/cloud-user/hanaworkshop-2022/temp/08_pacemaker.yml
-      dest: /home/cloud-user/hanaworkshop-2022/08_pacemaker.yml
+      src: /home/cloud-user/hanaworkshop-2023/temp/08_pacemaker.yml
+      dest: /home/cloud-user/hanaworkshop-2023/08_pacemaker.yml
 
 - name: Transfer and execute a script.
   hosts: hanas
 
   tasks:
   - name: Transfer the script
-    copy: src=/home/cloud-user/hanaworkshop-2022/pkg_fix.sh dest=/home/cloud-user mode=0777
+    copy: src=/home/cloud-user/hanaworkshop-2023/pkg_fix.sh dest=/home/cloud-user mode=0777
 
   - name: Execute the script
     command: sh /home/cloud-user/pkg_fix.sh
