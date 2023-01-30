@@ -1,5 +1,0 @@
----
-- hosts: s4hanas
-
-  roles:
-    - redhat_sap.sap_rhsm

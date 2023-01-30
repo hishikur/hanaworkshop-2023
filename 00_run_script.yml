@@ -36,7 +36,7 @@
       dest: /home/cloud-user/hanaworkshop-2023/08_pacemaker.yml
 
 - name: Transfer and execute a script.
-  hosts: hanas
+  hosts: s4hanas
 
   tasks:
   - name: Transfer the script
