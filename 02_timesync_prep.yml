@@ -1,6 +1,6 @@
 ---
 - name: Prepare SAP HANA database installation
-  hosts: s4hanas
+  hosts: sap
   become: yes
 
   vars:
