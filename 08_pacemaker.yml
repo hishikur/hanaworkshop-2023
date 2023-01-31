@@ -1,15 +1,8 @@
 ---
-- hosts: hanas
-
-  vars:
-    sap_hana_ha_pacemaker_hana_sid: RHE
-    sap_hana_ha_pacemaker_hana_instance_number: "01"
-    sap_hana_ha_pacemaker_vip: 192.168.47.100
-    sap_hana_ha_pacemaker_hacluster_password: "Mysecretpassword"
-    sap_hana_ha_pacemaker_node1_fqdn: hana-xxxxx1.example.com
-    sap_hana_ha_pacemaker_node2_fqdn: hana-xxxxx2.example.com
-    sap_hana_ha_pacemaker_node1_ip: 192.168.47.xx
-    sap_hana_ha_pacemaker_node2_ip: 192.168.47.xx
+- name: Setting SAP HANA Database Pacemaker Cluster
+  hosts: hanas
+  collections:
+    - community.sap_install
 
   roles:
-    - redhat_sap.sap_hana_ha_pacemaker
+    - sap_ha_pacemaker_cluster
