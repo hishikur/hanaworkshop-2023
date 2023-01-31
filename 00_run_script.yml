@@ -66,10 +66,10 @@
   tasks:
   - name: Copy install media
     copy:
-      src_dir: /nfs/HANA_installation
-      dest_dir: /tmp/media
+      src: /nfs/HANA_installation/
+      dest: /tmp/media
 
   - name: Copy SAPCAR
     copy:
       src: /nfs/SAPCAR/SAPCAR_1311-80000935.EXE
-      dest: /tmp/media
+      dest: /tmp/media/HANA_installation
