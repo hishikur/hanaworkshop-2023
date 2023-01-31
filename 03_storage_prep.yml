@@ -7,7 +7,6 @@
       - name: sap
         disks:
           - sdb
-          #- xvdf
         volumes:
           - name: data
             size: "128 GiB"

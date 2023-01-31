@@ -2,14 +2,16 @@
 - name: Host Agent installation
   hosts: hanas
   become: yes
+  collections:
+    - community.sap_install
 
   vars:
-    sap_hana_mediacheck_mountpoint: /software
+#    sap_hana_mediacheck_mountpoint: /software
     sap_hostagent_installation_type: rpm
     sap_hostagent_rpm_local_path: /software/SAPHOSTAGENT
     sap_hostagent_rpm_file_name: saphostagentrpm_44-20009394.rpm
-    sap_hostagent_clean_tmp_directory: yes
+    sap_hostagent_clean_tmp_directory: true
 
   roles:
-    - redhat_sap.sap_hostagent
+    - sap_hostagent
 
