@@ -1,5 +1,6 @@
 ---
-- hosts: sap
+- name: Activate SAP repository
+  hosts: sap
 
   roles:
     - redhat_sap.sap_rhsm

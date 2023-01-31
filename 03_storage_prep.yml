@@ -1,6 +1,6 @@
 ---
-
-- hosts: hanas
+- name: Create filesystem for SAP HANA
+  hosts: hanas
 
   vars:
     storage_pools:
