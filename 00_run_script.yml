@@ -72,4 +72,4 @@
   - name: Copy SAPCAR
     copy:
       src: /nfs/SAPCAR/SAPCAR_1311-80000935.EXE
-      dest: /tmp/media/HANA_installation
+      dest: /tmp/media
