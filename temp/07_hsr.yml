@@ -21,4 +21,4 @@
         hana_site: DC02
 
   roles:
-    - redhat_sap.sap_hana_hsr
+    - sap_ha_install_hana_hsr
