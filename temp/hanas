@@ -5,12 +5,12 @@ sap_hana_install_master_password : R3dh4t123!
 sap_domain : example.com
 sap_hana_cluster_nodes:
   - node_name: hana-{{ fqdn.stdout }}1
-    node_ip: {{ hana1ip.stdout }}
+    node_ip: "{{ hana1ip.stdout }}"
     node_role: primary
     hana_site: DC01
 
   - node_name: hana-{{ fqdn.stdout }}2
-    node_ip: {{ hana2ip.stdout }}
+    node_ip: "{{ hana2ip.stdout }}"
     node_role: secondary
     hana_site: DC02
 
