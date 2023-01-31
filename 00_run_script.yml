@@ -35,6 +35,7 @@
       path: /etc/ansible/ansible.cfg
       regexp: '^#deprecation_warnings = True'
       line: 'deprecation_warnings = False'
+    become: true
 
 #  - name: Prepare hsr.yml
 #    template:
