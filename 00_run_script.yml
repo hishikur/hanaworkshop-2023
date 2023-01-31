@@ -26,9 +26,15 @@
       dest: /home/cloud-user/hanaworkshop-2023/host_vars/hana-{{ fqdn.stdout }}2
 
   - name: Prepare hanas in group_vars
-    copy:
+    template:
       src: /home/cloud-user/hanaworkshop-2023/temp/hanas
       dest: /home/cloud-user/hanaworkshop-2023/group_vars/hanas
+
+  - name: Delete DEPRECATION WARNING
+    lineinfile:
+      path: /etc/ansible/ansible.cfg
+      regexp: '^#deprecation_warnings = True'
+      line: 'deprecation_warnings = False'
 
 #  - name: Prepare hsr.yml
 #    template:
@@ -53,8 +59,16 @@
   - name: Execute the script
     command: sh /home/cloud-user/pkg_fix.sh
 
-  - name: Prepare DB install media
-    copy:
-      src: /nfs/HANA_installation
-      dest: /tmp/media
+- name: Prepare media
+  hosts: hanas
 
+  tasks:
+  - name: Copy install media
+    copy:
+      src_dir: /nfs/HANA_installation
+      dest_dir: /tmp/media
+
+  - name: Copy SAPCAR
+    copy:
+      src: /nfs/SAPCAR/SAPCAR_1311-80000935.EXE
+      dest: /tmp/media
