@@ -1,8 +1,8 @@
 ---
-sap_hana_sid : RHE
-sap_hana_instance_number : 01
-sap_hana_install_master_password : R3dh4t123!
-sap_domain : example.com
+sap_hana_sid: RHE
+sap_hana_instance_number: 01
+sap_hana_install_master_password: R3dh4t123!
+sap_domain: example.com
 sap_hana_cluster_nodes:
   - node_name: hana-{{ fqdn.stdout }}1
     node_ip: "{{ hana1ip.stdout }}"

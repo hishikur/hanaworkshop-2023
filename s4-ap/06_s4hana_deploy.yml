@@ -1,6 +1,6 @@
 ---
-
-- hosts: s4hanas
+- name: Install SAP AP server
+  hosts: s4hanas
 
   vars:
     sap_s4hana_deployment_swpm_path: "/software/S4HANA_installation"
