@@ -15,16 +15,6 @@
     shell: nslookup hana-{{ fqdn.stdout }}2 |grep 192|cut -f 2 -d " "
     register : hana2ip
 
-  - name: Prepare hana1 in host_vars
-    copy:
-      src: /home/cloud-user/hanaworkshop-2023/temp/hana-xxxxx1
-      dest: /home/cloud-user/hanaworkshop-2023/host_vars/hana-{{ fqdn.stdout }}1
-
-  - name: Prepare hana2 in host_vars
-    copy:
-      src: /home/cloud-user/hanaworkshop-2023/temp/hana-xxxxx2
-      dest: /home/cloud-user/hanaworkshop-2023/host_vars/hana-{{ fqdn.stdout }}2
-
   - name: Prepare hanas in group_vars
     template:
       src: /home/cloud-user/hanaworkshop-2023/temp/hanas
@@ -36,16 +26,6 @@
       regexp: '^#deprecation_warnings = True'
       line: 'deprecation_warnings = False'
     become: true
-
-#  - name: Prepare hsr.yml
-#    template:
-#      src: /home/cloud-user/hanaworkshop-2023/temp/07_hsr.yml
-#      dest: /home/cloud-user/hanaworkshop-2023/07_hsr.yml
-
-#  - name: Prepare pacemaker.yml
-#    template:
-#      src: /home/cloud-user/hanaworkshop-2023/temp/08_pacemaker.yml
-#      dest: /home/cloud-user/hanaworkshop-2023/08_pacemaker.yml
 
 - name: Transfer and execute a script.
   hosts: sap
