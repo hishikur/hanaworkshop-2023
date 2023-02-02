@@ -17,7 +17,8 @@
             mount_point: "/usr/sapmnt"
             state: present
           - name: swap
-            size: "20 GiB"
+            fs_type: swap
+            size: "21 GiB"
             state: present
 
 
